@@ -5,15 +5,13 @@
 | Column | Type | Option |
 | ------ | ---- | ------ |
 | nickname | string | null: false |
-| email | string | null: false |
+| email | string | null: false, unique: true |
 | encrypted_password | string | null: false |
 | first_name | string | null: false |
 | last_name | string | null: false |
 | first_name_kana | string | null: false |
 | last_name_kana | string | null: false |
-| year | string | null: false |
-| month | string | null: false |
-| day | string |null: false |
+| birth_day | date | null: false |
 
 ### Association
 
@@ -28,11 +26,11 @@
 | image(ActiveStorageで実装)|  |  |
 | item_name | string | null: false |
 | explanation | text | null: false |
-| category | string | null: false |
-| state | string | null: false |
-| del_burden | string | null: false |
-| del_area | string | null: false |
-| del_days | string | null: false |
+| category_id | integer | null: false |
+| state_id | integer | null: false |
+| del_burden_id | integer | null: false |
+| del_area_id | integer | null: false |
+| del_days_id | integer | null: false |
 | price | string | null: false |
 
 ### Association
@@ -45,9 +43,8 @@
 
 | Column | Type | Option |
 | ------ | ---- | ------ |
-| street_address | references |  |
-| user | references |  |
-| item | references |  |
+| user | references | null: false, foreign_key: true |
+| item | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -61,11 +58,12 @@
 | Column | Type | Option |
 | ------ | ---- | ------ |
 | postal_code | string | null: false |
-| prefectures | string | null: false |
+| prefectures_id | integer | null: false |
 | municipalities | string | null: false |
 | address | string | null: false |
 | building | string |  |
 | phone_number | string | null: false |
+| purchase | references | null: false, foreign_key: true |
 
 ### Association
 
