@@ -28,10 +28,10 @@
 | explanation | text | null: false |
 | category_id | integer | null: false |
 | state_id | integer | null: false |
-| del_burden_id | integer | null: false |
-| del_area_id | integer | null: false |
-| del_days_id | integer | null: false |
-| price | string | null: false |
+| burden_id | integer | null: false |
+| prefectures_id | integer | null: false |
+| days_id | integer | null: false |
+| price | integer | null: false |
 
 ### Association
 
