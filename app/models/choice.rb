@@ -11,6 +11,10 @@ class Category_id < ActiveHash::Base
     { id: 9, name: 'ハンドメイド' },
     { id: 10, name: 'その他' }
   ]
+
+  include ActiveHash::Associations
+  has_many :items
+
 end
 
 class State_id < ActiveHash::Base
@@ -23,6 +27,9 @@ class State_id < ActiveHash::Base
     { id: 6, name: '傷や汚れあり' },
     { id: 7, name: '全体的に状態が悪い' }
   ]
+  include ActiveHash::Associations
+  has_many :items
+
 end
 
 class Burden_id < ActiveHash::Base
@@ -31,6 +38,9 @@ class Burden_id < ActiveHash::Base
     { id: 2, name: '着払い（購入者負担）' },
     { id: 3, name: '送料込み（出品者負担）' }
   ]
+  include ActiveHash::Associations
+  has_many :items
+
 end
 
 class Prefectures_id < ActiveHash::Base
@@ -84,6 +94,8 @@ class Prefectures_id < ActiveHash::Base
     { id: 47, name: '鹿児島県' },
     { id: 48, name: '沖縄県' }
   ]
+  include ActiveHash::Associations
+  has_many :items
 end
 
 class Days < ActiveHash::Base
@@ -92,4 +104,6 @@ class Days < ActiveHash::Base
     { id: 2, name: '２〜3日で発送' },
     { id: 3, name: '４〜7日で発送' }
   ]
+  include ActiveHash::Associations
+  has_many :items
 end
