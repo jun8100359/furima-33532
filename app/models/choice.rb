@@ -98,7 +98,7 @@ class Prefectures_id < ActiveHash::Base
   has_many :items
 end
 
-class Days < ActiveHash::Base
+class Days_id < ActiveHash::Base
   self.data = [
     { id: 1, name: '１〜2日で発送' },
     { id: 2, name: '２〜3日で発送' },
