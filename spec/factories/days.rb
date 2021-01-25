@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :choice do
+  factory :day do
     
   end
 end
