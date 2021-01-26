@@ -105,7 +105,7 @@ RSpec.describe Item, type: :model do
       end
 
       it 'category_idが1だと出品できない' do
-        @item.category_id = '1'
+        @item.category_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Category must be other than 1')
       end
@@ -117,7 +117,7 @@ RSpec.describe Item, type: :model do
       end
 
       it 'state_idが１だと出品できない' do
-        @item.state_id = '1'
+        @item.state_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('State must be other than 1')
       end
@@ -129,7 +129,7 @@ RSpec.describe Item, type: :model do
       end
 
       it 'burden_idが１だと出品できない' do
-        @item.burden_id = '1'
+        @item.burden_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Burden must be other than 1')
       end
@@ -141,7 +141,7 @@ RSpec.describe Item, type: :model do
       end
 
       it 'prefectures_idが１だと出品できない' do
-        @item.prefectures_id = '1'
+        @item.prefectures_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Prefectures must be other than 1')
       end
@@ -153,7 +153,7 @@ RSpec.describe Item, type: :model do
       end
 
       it 'days_idが１だと出品できない' do
-        @item.days_id = '1'
+        @item.days_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Days must be other than 1')
       end

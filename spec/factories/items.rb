@@ -4,11 +4,11 @@ FactoryBot.define do
 
     item_name      { Faker::Coffee.blend_name }
     explanation    { Faker::Space.planet }
-    category_id    { '2' }
-    state_id       { '2' }
-    burden_id      { '2' }
-    prefectures_id { '2' }
-    days_id        { '2' }
+    category_id    { 2 }
+    state_id       { 2 }
+    burden_id      { 2 }
+    prefectures_id { 2 }
+    days_id        { 2 }
     price          { 500 }
 
     after(:build) do |item|
