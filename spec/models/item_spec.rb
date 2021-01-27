@@ -8,7 +8,7 @@ RSpec.describe Item, type: :model do
   describe '商品の出品' do
     context '商品の出品ができる時' do
       it 'item_name, explanation, category_id, state_id, burden_id, \
-      prefectures_id, days_id, price, image, user_idがあれば出品できる' do
+      prefecture_id, day_id, price, image, user_idがあれば出品できる' do
         expect(@item).to be_valid
       end
     end
@@ -44,16 +44,16 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Burden can't be blank")
       end
 
-      it 'prefectures_idが空だと出品できない' do
-        @item.prefectures_id = ''
+      it 'prefecture_idが空だと出品できない' do
+        @item.prefecture_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Prefectures can't be blank")
+        expect(@item.errors.full_messages).to include("Prefecture can't be blank")
       end
 
-      it 'days_idが空だと出品できない' do
-        @item.days_id = ''
+      it 'day_idが空だと出品できない' do
+        @item.day_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Days can't be blank")
+        expect(@item.errors.full_messages).to include("Day can't be blank")
       end
 
       it 'priceが空だと出品できない' do
@@ -140,28 +140,28 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include('Burden is not a number')
       end
 
-      it 'prefectures_idが１だと出品できない' do
-        @item.prefectures_id = 1
+      it 'prefecture_idが１だと出品できない' do
+        @item.prefecture_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include('Prefectures must be other than 1')
+        expect(@item.errors.full_messages).to include('Prefecture must be other than 1')
       end
 
-      it 'prefectures_idが数字以外だと出品できない' do
-        @item.prefectures_id = 'a'
+      it 'prefecture_idが数字以外だと出品できない' do
+        @item.prefecture_id = 'a'
         @item.valid?
-        expect(@item.errors.full_messages).to include('Prefectures is not a number')
+        expect(@item.errors.full_messages).to include('Prefecture is not a number')
       end
 
-      it 'days_idが１だと出品できない' do
-        @item.days_id = 1
+      it 'day_idが１だと出品できない' do
+        @item.day_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include('Days must be other than 1')
+        expect(@item.errors.full_messages).to include('Day must be other than 1')
       end
 
-      it 'days_idが数字以外だと出品できない' do
-        @item.days_id = 'a'
+      it 'day_idが数字以外だと出品できない' do
+        @item.day_id = 'a'
         @item.valid?
-        expect(@item.errors.full_messages).to include('Days is not a number')
+        expect(@item.errors.full_messages).to include('Day is not a number')
       end
     end
   end
