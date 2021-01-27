@@ -7,8 +7,8 @@ FactoryBot.define do
     category_id    { 2 }
     state_id       { 2 }
     burden_id      { 2 }
-    prefectures_id { 2 }
-    days_id        { 2 }
+    prefecture_id { 2 }
+    day_id        { 2 }
     price          { 500 }
 
     after(:build) do |item|
