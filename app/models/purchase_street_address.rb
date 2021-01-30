@@ -9,7 +9,7 @@ class PurchaseStreetAddress
     validates :phone_number, format: { with: /\A\d{10}\z/ }, numericality: { less_than: 11 }
 
     def save
-      purchase = Purchase.create(user_id: item.user_id, item_id: item.id)
+      purchase = Purchase.create(user_id: user_id, item_id: item_id)
       StreetAddress.create(postal_code: postal_code, prefecture_id: prefecture_id, municipalities: municipalities, address: address, building: building, phone_number: phone_number, purchase_id: purchase.id)
     end
 end
