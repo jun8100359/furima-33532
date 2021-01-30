@@ -31,6 +31,7 @@
 | prefectures_id | integer | null: false |
 | days_id | integer | null: false |
 | price | integer | null: false |
+| user_id | references | |
 
 ### Association
 
