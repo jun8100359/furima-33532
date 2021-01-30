@@ -13,4 +13,5 @@ class Item < ApplicationRecord
                     format: { with: /\A[0-9]+\z/ }
   has_one_attached :image
   belongs_to :user
+  has_one :purchase
 end
