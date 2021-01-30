@@ -1,8 +1,9 @@
 class PurchasesController < ApplicationController
 
   def new
+    @item = Item.find(params[:item_id])  
     @purchase_street_address = PurchaseStreetAddress.new
-    @item = Item.find(params[:id])
+
   end
 
   def create
@@ -11,14 +12,15 @@ class PurchasesController < ApplicationController
       @purchase_street_address.save
       redirect_to root_path
     else
+      @item = Item.find(purchase_params[:item_id])
       render action: :new
     end
   end
 
-  privete
+  private
 
   def purchase_params
-    params.require(:puchase_street_address).permit(:postal_code, :prefecture_id, :municipalities, :address, :building, :phone_number).merge(user_id: current_user.id, item_id: @purchase_street_address.item_id)
+    params.require(:purchase_street_address).permit(:postal_code, :prefecture_id, :municipalities, :address, :building, :phone_number, :item_id).merge(user_id: current_user.id)
   end
   
 end
