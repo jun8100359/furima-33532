@@ -4,15 +4,14 @@ class PurchasesController < ApplicationController
   before_action :move_to_index2, only: :new
 
   def new
-    @item = Item.find(params[:item_id])  
+    @item = Item.find(params[:item_id])
     @purchase_street_address = PurchaseStreetAddress.new
-
   end
 
   def create
     @purchase_street_address = PurchaseStreetAddress.new(purchase_params)
     if @purchase_street_address.valid?
-      Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+      Payjp.api_key = ENV['PAYJP_SECRET_KEY']
       Payjp::Charge.create(
         amount: purchase_params[:price],
         card: purchase_params[:token],
@@ -29,7 +28,10 @@ class PurchasesController < ApplicationController
   private
 
   def purchase_params
-    params.require(:purchase_street_address).permit(:postal_code, :prefecture_id, :municipalities, :address, :building, :phone_number, :item_id, :price).merge(user_id: current_user.id, token: params[:token])
+    params.require(:purchase_street_address).permit(:postal_code, :prefecture_id, :municipalities,
+                                                    :address, :building, :phone_number, :item_id, :price).merge(
+                                                      user_id: current_user.id, token: params[:token]
+                                                    )
   end
 
   def move_to_index
@@ -41,5 +43,4 @@ class PurchasesController < ApplicationController
     @item = Item.find(params[:item_id])
     return redirect_to root_path if @item.purchase
   end
-
 end

@@ -76,45 +76,44 @@ RSpec.describe PurchaseStreetAddress, type: :model do
       it 'prefecture_idが数字以外だと登録できない' do
         @buy.prefecture_id = 'a'
         @buy.valid?
-        expect(@buy.errors.full_messages).to include("Prefecture is not a number")
+        expect(@buy.errors.full_messages).to include('Prefecture is not a number')
       end
 
       it 'postal_codeはハイフンがないと登録できない' do
         @buy.postal_code = '1111111'
         @buy.valid?
-        expect(@buy.errors.full_messages).to include("Postal code is invalid")
+        expect(@buy.errors.full_messages).to include('Postal code is invalid')
       end
 
       it 'postal_codeはハイフンの前3文字でないと登録できない' do
         @buy.postal_code = '1111-1111'
         @buy.valid?
-        expect(@buy.errors.full_messages).to include("Postal code is invalid")
+        expect(@buy.errors.full_messages).to include('Postal code is invalid')
       end
 
       it 'postal_codeはハイフンの後4文字でないと登録できない' do
         @buy.postal_code = '111-111'
         @buy.valid?
-        expect(@buy.errors.full_messages).to include("Postal code is invalid")
+        expect(@buy.errors.full_messages).to include('Postal code is invalid')
       end
 
       it 'postal_codeは半角数字でないと登録できない' do
         @buy.postal_code = '１１１-１１１１'
         @buy.valid?
-        expect(@buy.errors.full_messages).to include("Postal code is invalid")
+        expect(@buy.errors.full_messages).to include('Postal code is invalid')
       end
 
       it 'phone_numberは11字以内でないと登録できない' do
-        @buy.phone_number = 111111111112
+        @buy.phone_number = 111_111_111_112
         @buy.valid?
-        expect(@buy.errors.full_messages).to include("Phone number is invalid")
+        expect(@buy.errors.full_messages).to include('Phone number is invalid')
       end
 
       it 'phone_numberは半角数字でないと登録できない' do
         @buy.phone_number = '１１１１１１１１１１１'
         @buy.valid?
-        expect(@buy.errors.full_messages).to include("Phone number is invalid")
+        expect(@buy.errors.full_messages).to include('Phone number is invalid')
       end
-
     end
   end
 end
