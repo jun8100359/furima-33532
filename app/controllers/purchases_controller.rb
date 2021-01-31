@@ -12,6 +12,12 @@ class PurchasesController < ApplicationController
   def create
     @purchase_street_address = PurchaseStreetAddress.new(purchase_params)
     if @purchase_street_address.valid?
+      Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+      Payjp::Charge.create(
+        amount: purchase_params[:price],
+        card: purchase_params[:token],
+        currency: 'jpy'
+      )
       @purchase_street_address.save
       redirect_to root_path
     else
@@ -23,7 +29,7 @@ class PurchasesController < ApplicationController
   private
 
   def purchase_params
-    params.require(:purchase_street_address).permit(:postal_code, :prefecture_id, :municipalities, :address, :building, :phone_number, :item_id).merge(user_id: current_user.id)
+    params.require(:purchase_street_address).permit(:postal_code, :prefecture_id, :municipalities, :address, :building, :phone_number, :item_id, :price).merge(user_id: current_user.id, token: params[:token])
   end
 
   def move_to_index
