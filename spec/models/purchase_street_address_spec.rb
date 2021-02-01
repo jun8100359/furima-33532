@@ -2,7 +2,9 @@ require 'rails_helper'
 
 RSpec.describe PurchaseStreetAddress, type: :model do
   before do
-    @buy = FactoryBot.build(:purchase_street_address)
+    @user = FactoryBot.create(:user)
+    @item = FactoryBot.create(:item)
+    @buy = FactoryBot.build(:purchase_street_address, user_id: @user.id, item_id: @item.id)
   end
 
   describe '商品の購入' do
@@ -15,6 +17,7 @@ RSpec.describe PurchaseStreetAddress, type: :model do
       it 'buildingが入力されていなくても登録できる' do
         @buy.building = nil
         expect(@buy).to be_valid
+        sleep(1)
       end
     end
 
@@ -28,7 +31,8 @@ RSpec.describe PurchaseStreetAddress, type: :model do
       it 'prefecture_idが1だと登録できない' do
         @buy.prefecture_id = 1
         @buy.valid?
-        expect(@buy.errors.full_messages).to include("Prefecture can't be blank")
+        expect(@buy.errors.full_messages).to include("Prefecture must be other than 1")
+        sleep(1)
       end
 
       it 'municipalitiesが空だと登録できない' do
