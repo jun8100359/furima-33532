@@ -2,7 +2,6 @@ class PurchasesController < ApplicationController
   before_action :authenticate_user!, only: :new
   before_action :set_item, only: [:new, :move_to_index, :move_to_index2, :create]
   before_action :move_to_index, only: :new
-  before_action :move_to_index2, only: :create
 
   def new
     @purchase_street_address = PurchaseStreetAddress.new
@@ -30,11 +29,7 @@ class PurchasesController < ApplicationController
   end
 
   def move_to_index
-    return redirect_to root_path if current_user.id == @item.user.id
-  end
-
-  def move_to_index2
-    return redirect_to root_path if @item.purchase
+    return redirect_to root_path if current_user.id == @item.user.id || @item.purchase.present?
   end
 
   def set_item
