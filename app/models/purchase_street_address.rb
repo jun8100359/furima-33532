@@ -3,11 +3,12 @@ class PurchaseStreetAddress
   attr_accessor :user_id, :item_id, :postal_code, :prefecture_id, :municipalities, :address, :building, :phone_number,
                 :purchase, :token, :price
 
-  validates :user_id, :item_id, presence: true
-  validates :postal_code, :prefecture_id, :municipalities, :address, :phone_number, :token, :price, presence: true
-  validates :prefecture_id, numericality: { other_than: 1 }
-  validates :postal_code, format: { with: /\A\d{3}-\d{4}\z/ }
-  validates :phone_number, format: { with: /\A\d{11}\z/ }
+  with_options presence: true do
+    validates :municipalities, :address, :token, :price, :user_id, :item_id
+    validates :prefecture_id, numericality: { other_than: 1 }
+    validates :postal_code, format: { with: /\A\d{3}-\d{4}\z/ }
+    validates :phone_number, format: { with: /\A\d{11}\z/ }
+  end
 
   def save
     purchase = Purchase.create(user_id: user_id, item_id: item_id)

@@ -26,7 +26,7 @@ RSpec.describe PurchaseStreetAddress, type: :model do
       end
 
       it 'prefecture_idが1だと登録できない' do
-        @buy.prefecture_id = nil
+        @buy.prefecture_id = 1
         @buy.valid?
         expect(@buy.errors.full_messages).to include("Prefecture can't be blank")
       end
