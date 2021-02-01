@@ -1,7 +1,7 @@
 class PurchaseStreetAddress
   include ActiveModel::Model
   attr_accessor :user_id, :item_id, :postal_code, :prefecture_id, :municipalities, :address, :building, :phone_number,
-                :purchase, :token, :price
+                :token, :price
 
   with_options presence: true do
     validates :municipalities, :address, :token, :price, :user_id, :item_id
